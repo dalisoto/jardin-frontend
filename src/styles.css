@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'HalloAlmond';
+    src: url('assets/fonts/HalloAlmond.ttf') format('truetype');
+}
+
+h1 {
+    font-family:'HalloAlmond';
+    letter-spacing: 1px;
+}
+
+body{
+    background-color: #f7fbe8;
+    font-family:Arial, Helvetica, sans-serif;
+}

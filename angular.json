@@ -7,7 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "css"
         }
       },
       "root": "",
@@ -19,15 +19,12 @@
           "options": {
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
@@ -78,15 +75,12 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
+            "inlineStyleLanguage": "css",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ]
           }
         }

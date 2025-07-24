@@ -1,0 +1,123 @@
+<div class="home-container">
+    <header class="hero-section">
+        <h1>Bienvenido a tu Jardín Virtual 🌿</h1>
+        <h3>Un sitio que te ayuda a cuidar mejor tus plantas</h3>
+    </header>
+
+    <div class="content-row">
+
+        <!-- Carrusel de imágenes -->
+        <div class="column">
+            <div class="carrusel">
+                <img [src]="imagenes[imagenActual]" alt="Imagen del carrusel" class="imagen-carrusel" />
+
+                <div class="controles">
+                    <button (click)="anteriorImagen()">⟨</button>
+                    <button (click)="siguienteImagen()">⟩</button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Información del sitio -->
+        <div class="column info-box">
+            <h2>¿Qué puedes hacer aquí?</h2>
+            <ul>
+                <li>🌱 Registrar tus plantas y seguir su crecimiento.</li>
+                <li>📅 Obtener recordatorios de riego y trasplante.</li>
+                <li>📍 Recibir recomendaciones según tu clima y espacio.</li>
+                <li>📝 Aprender con nuestros consejos ecológicos.</li>
+                <li>🪴 Los mejores cuidados para tus plantas</li>
+            </ul>
+
+            <div>
+                <button type="submit" class="submit-btn"  (click)="abrirModal('registro')">Registrarse</button>
+                <button type="submit" class="login-btn" (click)="abrirModal('login')">Iniciar sesión</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal REGISTRO-->
+<div id="modalRegistrar" class="modal">
+    <div class="modal-contenido">
+        <h1>Registro de usuario</h1>
+
+        <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
+
+            <label>Correo:</label>
+            <input type="email" name="correo" [(ngModel)]="form.correo" required />
+
+            <label>Contraseña:</label>
+            <input type="text" name="password" [(ngModel)]="form.password" required />
+
+            <label>Nombre completo:</label>
+            <input type="text" name="nombre" [(ngModel)]="form.nombre" required />
+
+            <label>Edad:</label>
+            <input type="number" name="edad" [(ngModel)]="form.edad" required />
+
+            <label>Tipo de clima:</label>
+            <select name="clima" [(ngModel)]="form.clima" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="humedo">Húmedo</option>
+                <option value="seco">Seco</option>
+            </select>
+
+            <label>Zona geográfica:</label>
+            <select name="zona" [(ngModel)]="form.zona">
+                <option value="costa">Costa</option>
+                <option value="montaña">Montaña</option>
+                <option value="ciudad">Ciudad</option>
+                <option value="rural">Rural</option>
+            </select>
+
+            <label>Tipo de espacio para plantas:</label>
+            <select name="espacio" [(ngModel)]="form.espacio">
+                <option value="balcon">Balcón</option>
+                <option value="patio">Patio</option>
+                <option value="interior">Interior</option>
+                <option value="terraza">Terraza</option>
+            </select>
+
+            <label>¿Tienes mascotas?</label>
+            <label><input type="radio" name="mascotas" value="si" [(ngModel)]="form.mascotas" /> Sí</label>
+            <label><input type="radio" name="mascotas" value="no" [(ngModel)]="form.mascotas" /> No</label>
+
+            <label>Nivel de experiencia:</label>
+            <select name="experiencia" [(ngModel)]="form.experiencia">
+                <option value="principiante">Principiante</option>
+                <option value="intermedio">Intermedio</option>
+                <option value="avanzado">Avanzado</option>
+            </select>
+            <div>
+                <button type="submit" class="submit-btn">Registrarse</button>
+                <button class="cancel-btn" (click)="cerrarModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<!-- Modal INICIO DE SESIÓN -->
+<div id="modalLogin" class="modal">
+    <div class="modal-contenido">
+        <h1>Inicia Sesión</h1>
+
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+
+            <label>Correo:</label>
+            <input type="email" name="correo" [(ngModel)]="form.correo" required />
+
+            <label>Contraseña:</label>
+            <input type="text" name="password" [(ngModel)]="form.password" required />
+
+            <div>
+                <button type="submit" class="submit-btn">Inicia Sesión</button>
+                <button class="cancel-btn" (click)="cerrarModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
