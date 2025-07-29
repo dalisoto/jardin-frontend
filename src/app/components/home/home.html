@@ -48,26 +48,26 @@
         <form (ngSubmit)="onSubmit()" #registroForm="ngForm">
 
             <label>Correo:</label>
-            <input type="email" name="correo" [(ngModel)]="form.correo" required />
+            <input type="email" name="correo" [(ngModel)]="form.correo" required #email="ngModel"/>
 
             <label>Contraseña:</label>
-            <input type="text" name="password" [(ngModel)]="form.password" required />
+            <input type="text" name="password" [(ngModel)]="form.password" required #password="ngModel"/>
 
             <label>Nombre completo:</label>
-            <input type="text" name="nombre" [(ngModel)]="form.nombre" required />
+            <input type="text" name="nombre" [(ngModel)]="form.nombre" required #nombre="ngModel"/>
 
             <label>Edad:</label>
-            <input type="number" name="edad" [(ngModel)]="form.edad" required />
+            <input type="number" name="edad" [(ngModel)]="form.edad" required #edad="ngModel"/>
 
             <label>Tipo de clima:</label>
-            <select name="clima" [(ngModel)]="form.clima" required>
+            <select name="clima" [(ngModel)]="form.clima" required #clima="ngModel">
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="humedo">Húmedo</option>
                 <option value="seco">Seco</option>
             </select>
 
             <label>Zona geográfica:</label>
-            <select name="zona" [(ngModel)]="form.zona">
+            <select name="zona" [(ngModel)]="form.zona" required #zona="ngModel">
                 <option value="costa">Costa</option>
                 <option value="montaña">Montaña</option>
                 <option value="ciudad">Ciudad</option>
@@ -75,7 +75,7 @@
             </select>
 
             <label>Tipo de espacio para plantas:</label>
-            <select name="espacio" [(ngModel)]="form.espacio">
+            <select name="espacio" [(ngModel)]="form.espacio" required #espacio="ngModel">
                 <option value="balcon">Balcón</option>
                 <option value="patio">Patio</option>
                 <option value="interior">Interior</option>
@@ -87,16 +87,17 @@
             <label><input type="radio" name="mascotas" value="no" [(ngModel)]="form.mascotas" /> No</label>
 
             <label>Nivel de experiencia:</label>
-            <select name="experiencia" [(ngModel)]="form.experiencia">
+            <select name="experiencia" [(ngModel)]="form.experiencia" required #experiencia="ngModel">
+                <option value="" disabled selected>Selecciona una opción</option>
                 <option value="principiante">Principiante</option>
                 <option value="intermedio">Intermedio</option>
                 <option value="avanzado">Avanzado</option>
             </select>
             <div>
-                <button type="submit" class="submit-btn">Registrarse</button>
+                <button type="submit" class="submit-btn" [disabled]="registroForm.invalid">Registrarse</button>
                 <button class="cancel-btn" (click)="cerrarModal()">Cancelar</button>
             </div>
-        </form>
+        </form> 
     </div>
 </div>
 
