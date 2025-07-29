@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../../services/UserService';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./home.css']
 })
 export class Home {
+  userProfile: any;
+
   form = {
     correo: '',
     password: '',
@@ -25,15 +28,52 @@ export class Home {
     password: ''
   };
 
-  onLogin() {
-    console.log('Datos de login:', this.login);
-    // Aquí iría la lógica para validar el login con el backend
+  ngOnInit() {
+    this.onLogin();
   }
+
+  onLogin() {
+    // console.log('Datos de login:', this.login);
+    // this.userService.getProfile().subscribe({
+    //   next: (response) => {
+    //     this.userProfile = response.user;
+    //   },
+    //   error: (err) => {
+    //     console.error('Error al cargar perfil', err);
+    //     // Manejar error (redirigir a login, mostrar mensaje, etc.)
+    //   }
+    // });
+  }
+
+  // Inyecta UserService correctamente
+  constructor(private userService: UserService) {}
 
   onSubmit() {
     console.log('Datos del formulario:', this.form);
     // Aquí puedes hacer una petición HTTP al backend
-  }
+    // Mapeamos los nombres del formulario a los del backend
+    const userData = {
+        email: this.form.correo,
+        password: this.form.password,
+        nombre:this.form.nombre,
+        edad:this.form.edad,
+        tipoClima: this.form.clima,
+        zonaGeo: this.form.zona,
+        espacio: this.form.espacio,
+        mascota: this.form.mascotas,
+        experiencia: this.form.experiencia
+    };
+    // Envía los datos al backend
+    this.userService.register(userData).subscribe({
+    next: (response: any) => {
+      console.log('Registro exitoso', response);
+      this.cerrarModal();
+    },
+    error: (err: any) => {
+      console.error('Error en registro', err);
+    }
+  });
+}
 
   abrirModal(tipo: 'registro' | 'login'): void {
     let modalId = '';
@@ -50,7 +90,7 @@ export class Home {
     }
   }
 
-
+  
   cerrarModal(): void {
     const modales = ['modalRegistrar', 'modalLogin'];
     modales.forEach(id => {
