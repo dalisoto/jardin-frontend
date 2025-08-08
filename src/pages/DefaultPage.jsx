@@ -140,19 +140,19 @@ const DefaultPage = () => {
   const onRegister = async (data) => {
     setServerError("");
     console.log(data);
-    /* try {
-      const resp = await fetch("/api/auth/register", {
+    try {
+      const resp = await fetch(`${apiUrl}/api/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!resp.ok) throw new Error((await resp.json()).message || "Error de registro");
+      if (!resp.ok)
+        throw new Error((await resp.json()).message || "Error de registro");
       // const result = await resp.json();
       cerrarModal();
     } catch (e) {
       setServerError(e.message || "No se pudo registrar");
-    } */
-    cerrarModal();
+    }
   };
 
   return (
