@@ -1,0 +1,53 @@
+:root{
+  --primary-color: #f0fff0;      /* cámbialo si ya tienes tus vars */
+  --secondary-color: #e6f3e6;    /* cámbialo si ya tienes tus vars */
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: var(--primary-color);
+  color: rgb(0, 0, 0);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(88, 122, 91);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a,
+.navbar-links button {
+  color: rgb(88, 122, 91);
+  text-decoration: none;
+  margin: 0 0.75rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active,
+.navbar-links button:hover {
+  background-color: var(--secondary-color);
+}
+
+.user-profile {
+  color: #335a37;
+  font-weight: 600;
+  margin-left: 1rem;
+  white-space: nowrap;
+}
