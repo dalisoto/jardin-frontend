@@ -3,7 +3,7 @@ FROM node:20 AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY . .
+COPY . .            # <- copia .env.production
 RUN npm run build
 
 # Etapa 2: Nginx sirviendo estáticos
