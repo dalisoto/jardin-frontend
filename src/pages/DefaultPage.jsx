@@ -160,7 +160,7 @@ const DefaultPage = () => {
       {/* Hero */}
       <header className="text-center mb-8">
         <h1 className="text-4xl font-bold text-green-600 font-hallo tracking-wide">
-          Bienvenido a tu Jardín Virtual 🌿
+          Bienvenido a tu Jardín 🌿
         </h1>
         <h3 className="text-gray-600 mt-2 text-xl">
           Un sitio que te ayuda a cuidar mejor tus plantas
